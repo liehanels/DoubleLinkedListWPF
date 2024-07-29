@@ -35,7 +35,7 @@ namespace DoubleLinkedListWPF
             while (current != null)
             {
                 yield return current;
-                current = current.Prev;
+                current = current.Previous;
             }
         }
         public void AddLast(string data)
@@ -47,7 +47,7 @@ namespace DoubleLinkedListWPF
             }
             else
             {
-                newNode.Prev = tail;
+                newNode.Previous = tail;
                 tail.Next = newNode;
             }
             tail = newNode;
@@ -63,7 +63,7 @@ namespace DoubleLinkedListWPF
             }
             else
             {
-                newNode.Prev = newNode;
+                newNode.Previous = newNode;
             }
             head = newNode;
             Length++;
@@ -103,7 +103,7 @@ namespace DoubleLinkedListWPF
                 {
                     return current;
                 }
-                current = current.Prev;
+                current = current.Previous;
             }
             return null;
         }
@@ -114,10 +114,10 @@ namespace DoubleLinkedListWPF
             {
                 if (current.Data == value)
                 {
-                    if (current.Next == null) { tail = current.Prev; }
-                    else { current.Next.Prev = current.Prev; }
-                    if (current.Prev == null) { head = current.Next; }
-                    else { current.Prev.Next = current.Next; }
+                    if (current.Next == null) { tail = current.Previous; }
+                    else { current.Next.Previous = current.Previous; }
+                    if (current.Previous == null) { head = current.Next; }
+                    else { current.Previous.Next = current.Next; }
                     current = null;
                     Length--;
                     return true;
@@ -139,7 +139,7 @@ namespace DoubleLinkedListWPF
         {
             if (tail != null)
             {
-                tail = tail.Prev;
+                tail = tail.Previous;
                 if (tail == null) { head = null; }
                 Length--;
             }

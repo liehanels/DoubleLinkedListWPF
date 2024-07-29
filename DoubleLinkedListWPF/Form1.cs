@@ -36,7 +36,7 @@ namespace DoubleLinkedListWPF
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string input = txtSearch.Text;
-            if (list.Contains(input)) { MessageBox.Show(list.Find(input).Prev.Data + " <-- Prev | > "+ list.Find(input).Data + " < | Next --> " + list.Find(input).Next.Data); }
+            if (list.Contains(input)) { MessageBox.Show(list.Find(input).Previous.Data + " <-- Previous | > "+ list.Find(input).Data + " < | Next --> " + list.Find(input).Next.Data); }
             else { MessageBox.Show("Item not found"); }
             txtSearch.Clear();
         }
@@ -45,7 +45,7 @@ namespace DoubleLinkedListWPF
         {
             int count = 1;
             listView.Clear();
-            foreach (var item in list)
+            foreach (Node item in list.GetEnumeratorReverse())
             {
                 listView.Items.Add(count + ". " + item.Data);
                 count++;
